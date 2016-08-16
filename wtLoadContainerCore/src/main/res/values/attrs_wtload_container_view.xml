@@ -1,0 +1,14 @@
+<resources>
+    <declare-styleable name="WTLoadContainerView">
+        <!-- no-data-view layout  reference -->
+        <attr name="noDataView" format="reference"/>
+        <!-- network-error-view layout  reference -->
+        <attr name="networkErrorView" format="reference"/>
+        <!-- data-loading-view layout  reference -->
+        <attr name="dataLoadingView" format="reference"/>
+        <!--child-data-view id reference-->
+        <attr name="childDataViewId" format="reference"/>
+        <!--初始化就显示LoadingView-->
+        <attr name="showLoadingViewInitialize" format="boolean"/>
+    </declare-styleable>
+</resources>
