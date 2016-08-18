@@ -19,7 +19,7 @@ android {
         }
     }
 }
-//apply from: "../buildSystem/bintray/bintrayUpload.gradle"
+apply from: "../buildSystem/bintray/bintrayUpload.gradle"
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

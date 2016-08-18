@@ -62,16 +62,18 @@
             android:textColor="@android:color/white"/>
     </LinearLayout>
 
-
+    <!--app:noDataView="@layout/wt_load_detault_no_data_view"-->
+    <!--app:dataLoadingView="@layout/wt_load_detault_data_loading_view"-->
+    <!--app:networkErrorView="@layout/wt_load_detault_network_error_view"-->
     <com.wt.load.container.core.WTLoadContainerView
         android:id="@+id/wt_load_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:dataLoadingView="@layout/wt_load_detault_data_loading_view"
+
         app:childDataViewId="@id/scrollView"
-        app:networkErrorView="@layout/wt_load_detault_network_error_view"
+
         app:showLoadingViewInitialize="false"
-        app:noDataView="@layout/wt_load_detault_no_data_view">
+     >
 
 
         <ScrollView

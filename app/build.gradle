@@ -56,4 +56,5 @@ dependencies {
     //    compile 'io.janusproject.guava:guava:19.0.0'
 
     compile project(':wtLoadContainerCore')
+//    compile 'com.wt.load.container.core:wtLoadContainerCore:0.1'
 }

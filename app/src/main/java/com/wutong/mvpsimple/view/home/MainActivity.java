@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
     @OnClick(R.id.button1) void onclickLoading() {
         mPresenter.loadTestData();
         wtLoadContainer.showLoadingView();
-        startActivity(new Intent(this, FDemo01Activity.class));
+//        startActivity(new Intent(this, FDemo01Activity.class));
 
     }
 
