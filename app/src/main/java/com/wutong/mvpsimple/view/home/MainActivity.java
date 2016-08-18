@@ -1,37 +1,25 @@
 package com.wutong.mvpsimple.view.home;
 
-import android.content.Intent;
-import android.support.v7.widget.Toolbar;
-import android.widget.Button;
+import android.os.Handler;
 
 import com.wt.load.container.core.WTLoadContainerView;
 import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.App;
 import com.wutong.mvpsimple.base.BaseActivity;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
-import com.wutong.mvpsimple.common.utils.ToastHelper;
-import com.wutong.mvpsimple.common.utils.UserHelper;
-import com.wutong.mvpsimple.view.demo01.FDemo01Activity;
-
-import javax.inject.Inject;
 
 import butterknife.Bind;
-import butterknife.BindDimen;
-import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity<HomePresenter> implements HomeContaract.IHomeView {
+public class MainActivity extends BaseActivity<HomePresenter> implements HomeContaract.IHomeView, WTLoadContainerView.LoadContainerActionListener {
     private static final String TAG = MainActivity.class.getName();
 
-    @Bind(R.id.button1) Button button1;
-    @Bind(R.id.button2) Button button2;
-    @Bind(R.id.button3) Button button3;
-    @Bind(R.id.button4) Button button4;
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @BindDimen(R.dimen.activity_horizontal_margin) int gap;
 
-    @Inject UserHelper userHelper;
-    @Inject ToastHelper toastHelper;
-    @Bind(R.id.wt_load_container) WTLoadContainerView wtLoadContainer;
+    @Bind(R.id.wt_load_container1) WTLoadContainerView wtLoadContainer1;
+    @Bind(R.id.wt_load_container2) WTLoadContainerView wtLoadContainer2;
+    @Bind(R.id.wt_load_container3) WTLoadContainerView wtLoadContainer3;
+    private Handler handler1 = new Handler();
+    private Handler handler2 = new Handler();
+    private Handler handler3 = new Handler();
 
 
     @Override protected int getLayoutId() {
@@ -48,40 +36,64 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
     }
 
     @Override protected void init() {
-        wtLoadContainer.setLoadContainerActionListener(new WTLoadContainerView.LoadContainerActionListener() {
+        wtLoadContainer1.setLoadContainerActionListener(new WTLoadContainerView.LoadContainerActionListener() {
             @Override public void onNetWorkErrorViewClick() {
-                mPresenter.loadTestData();
-                wtLoadContainer.showLoadingView();
+
             }
 
             @Override public void onNoDataViewClick() {
 
             }
         });
+        wtLoadContainer2.setLoadContainerActionListener(new WTLoadContainerView.LoadContainerActionListener() {
+            @Override public void onNetWorkErrorViewClick() {
+
+            }
+
+            @Override public void onNoDataViewClick() {
+
+            }
+        });
+        wtLoadContainer3.setLoadContainerActionListener(new WTLoadContainerView.LoadContainerActionListener() {
+            @Override public void onNetWorkErrorViewClick() {
+
+            }
+
+            @Override public void onNoDataViewClick() {
+
+            }
+        });
+
+        handler1.postDelayed(new Runnable() {
+            @Override public void run() {
+                wtLoadContainer1.showDataView();
+            }
+        },2000);
+        handler2.postDelayed(new Runnable() {
+            @Override public void run() {
+              wtLoadContainer2.showNoDataView();
+            }
+        },4000);
+        handler3.postDelayed(new Runnable() {
+            @Override public void run() {
+                wtLoadContainer3.showNetErrorView();
+            }
+        },6000);
     }
 
-    @OnClick(R.id.button1) void onclickLoading() {
-        mPresenter.loadTestData();
-        wtLoadContainer.showLoadingView();
-//        startActivity(new Intent(this, FDemo01Activity.class));
-
-    }
-
-    @OnClick(R.id.button2) void onclickNoData() {
-        wtLoadContainer.showNoDataView();
-    }
-
-    @OnClick(R.id.button3) void onclickNetError() {
-        wtLoadContainer.showNetErrorView();
-    }
-
-    @OnClick(R.id.button4) void onclickShowData() {
-        wtLoadContainer.showDataView();
+    @Override protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override public void loadSuccess() {
-        wtLoadContainer.showDataView();
     }
 
 
+    @Override public void onNetWorkErrorViewClick() {
+
+    }
+
+    @Override public void onNoDataViewClick() {
+
+    }
 }

@@ -12,121 +12,67 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_dark"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="加载中"
-            android:textColor="@android:color/white"/>
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_dark"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="没有数据"
-            android:textColor="@android:color/white"/>
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_dark"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="网络错误"
-            android:textColor="@android:color/white"/>
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_dark"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="显示你的View"
-            android:textColor="@android:color/white"/>
-    </LinearLayout>
-
-    <!--app:noDataView="@layout/wt_load_detault_no_data_view"-->
-    <!--app:dataLoadingView="@layout/wt_load_detault_data_loading_view"-->
-    <!--app:networkErrorView="@layout/wt_load_detault_network_error_view"-->
-    <com.wt.load.container.core.WTLoadContainerView
-        android:id="@+id/wt_load_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        app:childDataViewId="@id/scrollView"
-
-        app:showLoadingViewInitialize="false"
-     >
+        android:layout_height="match_parent">
 
 
-        <ScrollView
-            android:id="@+id/scrollView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
 
-            <LinearLayout
+            android:orientation="vertical">
+
+
+            <com.wt.load.container.core.WTLoadContainerView
+                android:id="@+id/wt_load_container1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="100dp"
+                app:childDataViewId="@+id/child01"
+                app:dataLoadingView="@layout/wt_load_detault_data_loading_view"
+                app:networkErrorView="@layout/wt_load_detault_network_error_view"
+                app:noDataView="@layout/wt_load_detault_no_data_view"
+                app:showLoadingViewInitialize="true">
 
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New CheckBox"/>
+                <TextView
+                    android:id="@+id/child01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Large Text11"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-                <RadioButton
-                    android:id="@+id/radioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New RadioButton"/>
+            </com.wt.load.container.core.WTLoadContainerView>
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="New Button"/>
+            <com.wt.load.container.core.WTLoadContainerView
+                android:id="@+id/wt_load_container2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:childDataViewId="@+id/child02"
+                android:background="@android:color/holo_red_light"
+                app:showLoadingViewInitialize="true">
 
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"/>
+                <TextView
+                    android:id="@+id/child02"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Large Text22"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+            </com.wt.load.container.core.WTLoadContainerView>
 
-                <Button
-                    android:id="@+id/button"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:text="New Button"/>
+            <com.wt.load.container.core.WTLoadContainerView
+                android:id="@+id/wt_load_container3"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:childDataViewId="@+id/child03"
+                app:showLoadingViewInitialize="true">
 
-                <Switch
-                    android:id="@+id/switch1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New Switch"/>
-            </LinearLayout>
-        </ScrollView>
-
-    </com.wt.load.container.core.WTLoadContainerView>
-
-
+                <TextView
+                    android:id="@+id/child03"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Large Text33"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+            </com.wt.load.container.core.WTLoadContainerView>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
