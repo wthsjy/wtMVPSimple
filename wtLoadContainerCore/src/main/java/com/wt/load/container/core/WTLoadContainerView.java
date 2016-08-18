@@ -150,7 +150,16 @@ public class WTLoadContainerView extends FrameLayout {
                 throw new NoChildDataViewIdException("childDataView must not be null");
             }
         }
-        childDataView.setVisibility(show ? VISIBLE : GONE);
+        if (show){
+            if(childDataView.getVisibility() != VISIBLE){
+                childDataView.setVisibility(VISIBLE);
+            }
+        }else {
+            if(childDataView.getVisibility() != GONE){
+                childDataView.setVisibility(GONE);
+            }
+        }
+
     }
 
     /**
