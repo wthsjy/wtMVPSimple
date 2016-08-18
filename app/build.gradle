@@ -55,6 +55,6 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     //    compile 'io.janusproject.guava:guava:19.0.0'
 
-    compile project(':wtLoadContainerCore')
-//    compile 'com.wt.load.container.core:wtLoadContainerCore:0.1'
+//    compile project(':wtLoadContainerCore')
+//    compile 'com.wt.load.container.core:wtLoadContainerCore:0.11'
 }

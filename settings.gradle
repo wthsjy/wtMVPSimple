@@ -1,1 +1,1 @@
-include ':app', ':wtLoadContainerCore'
+include ':app'
