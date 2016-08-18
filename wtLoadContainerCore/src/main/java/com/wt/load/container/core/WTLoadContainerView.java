@@ -12,11 +12,9 @@ import android.widget.FrameLayout;
 
 public class WTLoadContainerView extends FrameLayout {
 
+    private static final String TAG = WTLoadContainerView.class.getSimpleName();
+    private Context mContext;
 
-    private int loadingViewResId;
-    private View loadingView;
-    private boolean showLoadingViewInitialize = false;
-    private LoadContainerActionListener mListener;
 
     /**
      * ChildDataView 异常类
@@ -36,18 +34,24 @@ public class WTLoadContainerView extends FrameLayout {
         void onNoDataViewClick();
     }
 
-    private static final String TAG = WTLoadContainerView.class.getSimpleName();
-    private Context mContext;
+
+    private boolean showLoadingViewInitialize = false;
+    private LoadContainerActionListener mListener;
+    /**
+     * 加载中
+     */
+    private int loadingViewResId = R.layout.wt_load_detault_data_loading_view;
+    private View loadingView;
     /**
      * 没有内容时显示的View
      */
     private View noDataView;
-    private int noDataViewResId;
+    private int noDataViewResId = R.layout.wt_load_detault_no_data_view;
     /**
      * 网络异常时显示的View
      */
     private View netErrorView;
-    private int netErrorViewResId;
+    private int netErrorViewResId = R.layout.wt_load_detault_network_error_view;
 
     /**
      * 子类容器id，如有多个子View，请一定用viewGroup或ViewGroup 子类进行包裹，否则出现问题
@@ -84,27 +88,27 @@ public class WTLoadContainerView extends FrameLayout {
 
         if (a.hasValue(R.styleable.WTLoadContainerView_dataLoadingView)) {
             loadingViewResId = a.getResourceId(
-                    R.styleable.WTLoadContainerView_dataLoadingView, 0);
+                    R.styleable.WTLoadContainerView_dataLoadingView, R.layout.wt_load_detault_data_loading_view);
 
         }
         if (a.hasValue(R.styleable.WTLoadContainerView_noDataView)) {
             noDataViewResId = a.getResourceId(
-                    R.styleable.WTLoadContainerView_noDataView, 0);
+                    R.styleable.WTLoadContainerView_noDataView, R.layout.wt_load_detault_no_data_view);
 
         }
 
         if (a.hasValue(R.styleable.WTLoadContainerView_networkErrorView)) {
             netErrorViewResId = a.getResourceId(
-                    R.styleable.WTLoadContainerView_networkErrorView, 0);
-
+                    R.styleable.WTLoadContainerView_networkErrorView, R.layout.wt_load_detault_network_error_view);
         }
 
         childDataViewId = a.getResourceId(R.styleable.WTLoadContainerView_childDataViewId, 0);
+        a.recycle();
+
         if (childDataViewId == 0) {
             throw new NoChildDataViewIdException("childDataViewId must not be zero!");
         }
 
-        a.recycle();
 
     }
 
@@ -165,6 +169,8 @@ public class WTLoadContainerView extends FrameLayout {
 
     /**
      * 显示或隐藏 no data view
+     *
+     * @param show true 显示
      */
     private void toggleNoDataView(boolean show) {
         if (noDataViewResId == 0) {
@@ -219,6 +225,8 @@ public class WTLoadContainerView extends FrameLayout {
 
     /**
      * 网络异常
+     *
+     * @param show true 显示
      */
     private void toggleNetErrorView(boolean show) {
 
@@ -269,6 +277,8 @@ public class WTLoadContainerView extends FrameLayout {
 
     /**
      * 正在加载中
+     *
+     * @param show true 显示
      */
     private void toggleLoadingView(boolean show) {
 

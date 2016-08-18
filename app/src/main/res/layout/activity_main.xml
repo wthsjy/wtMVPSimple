@@ -67,11 +67,11 @@
         android:id="@+id/wt_load_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:dataLoadingView="@layout/data_loading_view"
+        app:dataLoadingView="@layout/wt_load_detault_data_loading_view"
         app:childDataViewId="@id/scrollView"
-        app:networkErrorView="@layout/network_error_view"
+        app:networkErrorView="@layout/wt_load_detault_network_error_view"
         app:showLoadingViewInitialize="false"
-        app:noDataView="@layout/no_data_view">
+        app:noDataView="@layout/wt_load_detault_no_data_view">
 
 
         <ScrollView
