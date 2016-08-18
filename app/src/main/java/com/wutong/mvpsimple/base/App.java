@@ -2,6 +2,7 @@ package com.wutong.mvpsimple.base;
 
 import android.app.Application;
 
+import com.wutong.mvpsimple.BuildConfig;
 import com.wutong.mvpsimple.common.di.component.AppComponent;
 import com.wutong.mvpsimple.common.di.component.DaggerAppComponent;
 import com.wutong.mvpsimple.common.di.module.AppModule;
@@ -18,6 +19,7 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         initDagger2();
+
 
     }
 
