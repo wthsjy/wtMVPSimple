@@ -107,4 +107,5 @@ public abstract class BseViewPagerFragment<T extends BasePresenter> extends RxFr
     protected abstract void inject();
 
 
+
 }

@@ -1,4 +1,4 @@
-package com.wutong.mvpsimple.common.utils;
+package com.wutong.mvpsimple.common.utils.okhttp;
 
 import com.wutong.mvpsimple.BuildConfig;
 

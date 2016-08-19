@@ -15,6 +15,7 @@ android {
         versionName rootProject.ext.versionName
 
         buildConfigField("String","ENDPOINT",rootProject.ext.endpoint)
+        buildConfigField("String","TOKEN_ERROR_CODE",rootProject.ext.tokenErrorCode)
     }
     buildTypes {
         release {

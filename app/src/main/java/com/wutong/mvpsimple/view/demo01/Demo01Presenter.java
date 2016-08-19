@@ -4,10 +4,10 @@ import android.os.Handler;
 
 import com.trello.rxlifecycle.ActivityEvent;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
-import com.wutong.mvpsimple.common.utils.RxHelper;
+import com.wutong.mvpsimple.base.BasePresenter;
+import com.wutong.mvpsimple.common.utils.okhttp.BaseRetrofitSubscriber;
 import com.wutong.mvpsimple.data.entity.BaseEntity;
 import com.wutong.mvpsimple.data.model.TestDataModel;
-import com.wutong.mvpsimple.base.BasePresenter;
 
 import javax.inject.Inject;
 
@@ -30,23 +30,25 @@ public class Demo01Presenter extends BasePresenter<Demo01Contaract.IDemo01View> 
 
     @Override public void loadTestData() {
 
-        testDataModel.get().getData()
+        testDataModel.get().getData(3000)
                 .compose(mActivity.<BaseEntity>bindUntilEvent(ActivityEvent.DESTROY))
-                .subscribe(new RxHelper.BaseSubscriber<BaseEntity>() {
-                    @Override public void onCompleted() {
+                .subscribe(new BaseRetrofitSubscriber<BaseEntity>() {
+
+
+                    @Override public void onStart() {
 
                     }
 
-                    @Override public void onError(Throwable e) {
-                        new Handler().postDelayed(new Runnable() {
-                            @Override public void run() {
-                                mView.loadSuccess();
-                            }
-                        },2000);
+                    @Override protected void onSuccess(BaseEntity o) {
 
                     }
 
-                    @Override public void onNext(BaseEntity o) {
+
+                    @Override public void onHttpError() {
+
+                    }
+
+                    @Override protected void onUnknowError(Throwable e) {
 
                     }
                 });

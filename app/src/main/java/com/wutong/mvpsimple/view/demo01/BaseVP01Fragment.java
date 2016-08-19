@@ -41,4 +41,6 @@ public class BaseVP01Fragment extends BseViewPagerFragment<VPF01Presenter> imple
 
     @Override public void loadSuccess() {
     }
+
+
 }

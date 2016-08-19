@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
         });
         wtLoadContainer3.setLoadContainerActionListener(new WTLoadContainerView.LoadContainerActionListener() {
             @Override public void onNetWorkErrorViewClick(WTLoadContainerView view) {
-                mPresenter.loadTestData();
+                mPresenter.loadTestData(3000);
                 view.showLoadingView();
             }
 
@@ -67,21 +67,26 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
             }
         });
 
-        handler1.postDelayed(new Runnable() {
-            @Override public void run() {
-                wtLoadContainer1.showDataView();
-            }
-        }, 2000);
-        handler2.postDelayed(new Runnable() {
-            @Override public void run() {
-                wtLoadContainer2.showNoDataView();
-            }
-        }, 4000);
-        handler3.postDelayed(new Runnable() {
-            @Override public void run() {
-                wtLoadContainer3.showNetErrorView();
-            }
-        }, 6000);
+//        handler1.postDelayed(new Runnable() {
+//            @Override public void run() {
+//                wtLoadContainer1.showDataView();
+//            }
+//        }, 2000);
+//        handler2.postDelayed(new Runnable() {
+//            @Override public void run() {
+//                wtLoadContainer2.showNoDataView();
+//            }
+//        }, 4000);
+//        handler3.postDelayed(new Runnable() {
+//            @Override public void run() {
+//                wtLoadContainer3.showNetErrorView();
+//            }
+//        }, 6000);
+
+        mPresenter.loadTestData(3000);
+        mPresenter.loadTestData(6000);
+        mPresenter.loadTestData(9000);
+        mPresenter.loadTestData(12000);
     }
 
     @Override protected void onDestroy() {
@@ -89,7 +94,7 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
     }
 
     @Override public void loadSuccess() {
-        wtLoadContainer3.showNetErrorView();
+        wtLoadContainer3.showDataView();
     }
 
 

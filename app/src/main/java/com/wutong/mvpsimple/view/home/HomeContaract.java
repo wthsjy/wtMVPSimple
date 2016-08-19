@@ -13,7 +13,7 @@ public class HomeContaract {
     }
 
     public interface IHomePresenter extends IPresenter {
-        void loadTestData();
+        void loadTestData(int time);
 
     }
 

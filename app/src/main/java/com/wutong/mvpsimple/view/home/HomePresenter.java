@@ -6,7 +6,7 @@ import com.trello.rxlifecycle.ActivityEvent;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.wutong.mvpsimple.base.BasePresenter;
 import com.wutong.mvpsimple.common.utils.LogHelper;
-import com.wutong.mvpsimple.common.utils.RxHelper.BaseSubscriber;
+import com.wutong.mvpsimple.common.utils.okhttp.BaseRetrofitSubscriber;
 import com.wutong.mvpsimple.data.entity.BaseEntity;
 import com.wutong.mvpsimple.data.model.TestDataModel;
 
@@ -29,28 +29,25 @@ public class HomePresenter extends BasePresenter<HomeContaract.IHomeView> implem
     }
 
 
-    @Override public void loadTestData() {
+    @Override public void loadTestData(int time) {
 
-        testDataModel.get().getData()
+        testDataModel.get().getData(time)
                 .compose(mActivity.<BaseEntity>bindUntilEvent(ActivityEvent.DESTROY))
-                .subscribe(new BaseSubscriber<BaseEntity>() {
-                    @Override public void onCompleted() {
-                        LogHelper.d(TAG,"onCompleted");
+                .subscribe(new BaseRetrofitSubscriber<BaseEntity>() {
+
+                    @Override public void onStart() {
                     }
 
-                    @Override public void onError(Throwable e) {
-                        LogHelper.d(TAG,"onError");
-                        e.printStackTrace();
-
+                    @Override protected void onSuccess(BaseEntity o) {
+                        mView.loadSuccess();
                     }
 
-                    @Override public void onNext(BaseEntity o) {
-                        LogHelper.d(TAG,"onNext");
-                        new Handler().postDelayed(new Runnable() {
-                            @Override public void run() {
-                                mView.loadSuccess();
-                            }
-                        }, 2000);
+
+                    @Override public void onHttpError() {
+                    }
+
+                    @Override protected void onUnknowError(Throwable e) {
+
                     }
                 });
     }

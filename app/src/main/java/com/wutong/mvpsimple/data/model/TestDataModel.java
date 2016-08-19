@@ -1,7 +1,7 @@
 package com.wutong.mvpsimple.data.model;
 
 import com.wutong.mvpsimple.common.utils.LogHelper;
-import com.wutong.mvpsimple.common.utils.RetrofitHelper;
+import com.wutong.mvpsimple.common.utils.okhttp.RetrofitHelper;
 import com.wutong.mvpsimple.data.entity.BaseEntity;
 import com.wutong.mvpsimple.data.model.api.TestApiService;
 
@@ -27,8 +27,8 @@ public class TestDataModel {
     }
 
 
-    public Observable<BaseEntity> getData() {
-        return apiService.getData().subscribeOn(Schedulers.io())
+    public Observable<BaseEntity> getData(int time) {
+        return apiService.getData(time).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
 
     }

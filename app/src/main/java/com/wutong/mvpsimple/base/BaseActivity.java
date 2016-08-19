@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
+import org.greenrobot.eventbus.EventBus;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
@@ -15,6 +17,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
     @Inject
     public T mPresenter;
 
+
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         inject();
@@ -25,6 +28,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
 
     }
 
+    @Override protected void onResume() {
+        super.onResume();
+    }
+
     /**
      * 初始化
      */
@@ -32,6 +39,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
 
     /**
      * 布局
+     *
      * @return
      */
     protected abstract int getLayoutId();
