@@ -1,5 +1,6 @@
 package com.wutong.mvpsimple.view.home;
 
+import android.content.Intent;
 import android.os.Handler;
 
 import com.wt.load.container.core.WTLoadContainerView;
@@ -7,10 +8,11 @@ import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.App;
 import com.wutong.mvpsimple.base.BaseActivity;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
+import com.wutong.mvpsimple.view.demo01.FDemo01Activity;
 
 import butterknife.Bind;
 
-public class MainActivity extends BaseActivity<HomePresenter> implements HomeContaract.IHomeView, WTLoadContainerView.LoadContainerActionListener {
+public class MainActivity extends BaseActivity<HomePresenter> implements HomeContaract.IHomeView {
     private static final String TAG = MainActivity.class.getName();
 
 
@@ -37,29 +39,30 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
 
     @Override protected void init() {
         wtLoadContainer1.setLoadContainerActionListener(new WTLoadContainerView.LoadContainerActionListener() {
-            @Override public void onNetWorkErrorViewClick() {
+            @Override public void onNetWorkErrorViewClick(WTLoadContainerView view) {
 
             }
 
-            @Override public void onNoDataViewClick() {
+            @Override public void onNoDataViewClick(WTLoadContainerView view) {
 
             }
         });
         wtLoadContainer2.setLoadContainerActionListener(new WTLoadContainerView.LoadContainerActionListener() {
-            @Override public void onNetWorkErrorViewClick() {
+            @Override public void onNetWorkErrorViewClick(WTLoadContainerView view) {
 
             }
 
-            @Override public void onNoDataViewClick() {
-
+            @Override public void onNoDataViewClick(WTLoadContainerView view) {
+                startActivity(new Intent(MainActivity.this, FDemo01Activity.class));
             }
         });
         wtLoadContainer3.setLoadContainerActionListener(new WTLoadContainerView.LoadContainerActionListener() {
-            @Override public void onNetWorkErrorViewClick() {
-
+            @Override public void onNetWorkErrorViewClick(WTLoadContainerView view) {
+                mPresenter.loadTestData();
+                view.showLoadingView();
             }
 
-            @Override public void onNoDataViewClick() {
+            @Override public void onNoDataViewClick(WTLoadContainerView view) {
 
             }
         });
@@ -68,17 +71,17 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
             @Override public void run() {
                 wtLoadContainer1.showDataView();
             }
-        },2000);
+        }, 2000);
         handler2.postDelayed(new Runnable() {
             @Override public void run() {
-              wtLoadContainer2.showNoDataView();
+                wtLoadContainer2.showNoDataView();
             }
-        },4000);
+        }, 4000);
         handler3.postDelayed(new Runnable() {
             @Override public void run() {
                 wtLoadContainer3.showNetErrorView();
             }
-        },6000);
+        }, 6000);
     }
 
     @Override protected void onDestroy() {
@@ -86,14 +89,8 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
     }
 
     @Override public void loadSuccess() {
+        wtLoadContainer3.showNetErrorView();
     }
 
 
-    @Override public void onNetWorkErrorViewClick() {
-
-    }
-
-    @Override public void onNoDataViewClick() {
-
-    }
 }

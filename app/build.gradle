@@ -13,6 +13,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+
+        buildConfigField("String","ENDPOINT",rootProject.ext.endpoint)
     }
     buildTypes {
         release {

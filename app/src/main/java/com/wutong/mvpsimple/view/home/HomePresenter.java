@@ -4,10 +4,11 @@ import android.os.Handler;
 
 import com.trello.rxlifecycle.ActivityEvent;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+import com.wutong.mvpsimple.base.BasePresenter;
+import com.wutong.mvpsimple.common.utils.LogHelper;
 import com.wutong.mvpsimple.common.utils.RxHelper.BaseSubscriber;
 import com.wutong.mvpsimple.data.entity.BaseEntity;
 import com.wutong.mvpsimple.data.model.TestDataModel;
-import com.wutong.mvpsimple.base.BasePresenter;
 
 import javax.inject.Inject;
 
@@ -30,24 +31,26 @@ public class HomePresenter extends BasePresenter<HomeContaract.IHomeView> implem
 
     @Override public void loadTestData() {
 
-        testDataModel.get().test()
+        testDataModel.get().getData()
                 .compose(mActivity.<BaseEntity>bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(new BaseSubscriber<BaseEntity>() {
                     @Override public void onCompleted() {
-
+                        LogHelper.d(TAG,"onCompleted");
                     }
 
                     @Override public void onError(Throwable e) {
+                        LogHelper.d(TAG,"onError");
+                        e.printStackTrace();
+
+                    }
+
+                    @Override public void onNext(BaseEntity o) {
+                        LogHelper.d(TAG,"onNext");
                         new Handler().postDelayed(new Runnable() {
                             @Override public void run() {
                                 mView.loadSuccess();
                             }
                         }, 2000);
-
-                    }
-
-                    @Override public void onNext(BaseEntity o) {
-
                     }
                 });
     }

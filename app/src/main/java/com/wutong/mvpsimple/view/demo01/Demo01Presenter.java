@@ -30,7 +30,7 @@ public class Demo01Presenter extends BasePresenter<Demo01Contaract.IDemo01View> 
 
     @Override public void loadTestData() {
 
-        testDataModel.get().test()
+        testDataModel.get().getData()
                 .compose(mActivity.<BaseEntity>bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(new RxHelper.BaseSubscriber<BaseEntity>() {
                     @Override public void onCompleted() {
