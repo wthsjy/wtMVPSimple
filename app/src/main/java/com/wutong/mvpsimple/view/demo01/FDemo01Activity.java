@@ -39,7 +39,7 @@ public class FDemo01Activity extends BaseActivity<Demo01Presenter> {
         for (int i = 0; i < 4; i++) {
             Bundle bundle = new Bundle();
             bundle.putString("key", i + "");
-            creator.add("0" + i, BaseVP01Fragment.class, bundle);
+            creator.add("0" + i, DemoVP01Fragment.class, bundle);
         }
 
 

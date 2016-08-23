@@ -13,7 +13,7 @@ import dagger.Component;
 @ActivityScope
 @Component(dependencies = AppComponent.class, modules = {ActivityModule.class})
 public interface Demo01Component extends ActivityAbstractComponent {
-    void inject(BaseVP01Fragment baseVP01Fragment);
+    void inject(DemoVP01Fragment demoVP01Fragment);
 
     void inject(FDemo01Activity fDemo01Activity);
 }
