@@ -35,9 +35,9 @@ public abstract class BaseNormalFragment<T extends BasePresenter> extends RxFrag
             mRootView = inflater.inflate(getLayutResId(), container, false);
             ButterKnife.bind(this, mRootView);
             mPresenter.attachView(this);
-
+            init();
         }
-        init();
+
         return mRootView;
     }
 
