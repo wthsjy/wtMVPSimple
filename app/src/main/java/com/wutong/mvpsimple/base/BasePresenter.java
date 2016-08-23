@@ -9,16 +9,22 @@ public abstract class BasePresenter<V> {
     protected V mView;
 
     public void dettachView() {
-        LogHelper.d("BasePresenter<"+mView.getClass().getSimpleName()+">",
-                "dettachView: mView set null ");
+        if (mView != null){
+            LogHelper.d("BasePresenter<"+mView.getClass().getSimpleName()+">",
+                    "dettachView: mView set null ");
+        }
+
         mView = null;
 
     }
 
     public void attachView(V  view) {
         mView = view;
-        LogHelper.d("BasePresenter<"+mView.getClass().getSimpleName()+">",
-                "attachView: mView instance of "+mView.getClass().getSimpleName());
+        if (mView!=null){
+            LogHelper.d("BasePresenter<"+mView.getClass().getSimpleName()+">",
+                    "attachView: mView instance of "+mView.getClass().getSimpleName());
+        }
+
 
     }
 

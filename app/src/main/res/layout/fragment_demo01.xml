@@ -10,4 +10,5 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="01"
         android:id="@+id/textView2"/>
+    <include layout="@layout/layout_common_refresh_list"/>
 </LinearLayout>
