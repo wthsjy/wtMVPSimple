@@ -20,8 +20,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:orientation="vertical">
+            <Button
+                android:id="@+id/btn_jump"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="jump"/>
 
 
             <com.wt.load.container.core.WTLoadContainerView

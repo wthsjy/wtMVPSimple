@@ -5,7 +5,7 @@ import android.widget.TextView;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.App;
-import com.wutong.mvpsimple.base.BseViewPagerFragment;
+import com.wutong.mvpsimple.base.BaseViewPagerFragment;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
 import com.wutong.mvpsimple.common.utils.UserHelper;
 
@@ -16,7 +16,7 @@ import butterknife.Bind;
 /**
  * Created by 吴同 on 2016/8/16 0016.
  */
-public class BaseVP01Fragment extends BseViewPagerFragment<VPF01Presenter> implements Demo01Contaract.IDemo01View {
+public class BaseVP01Fragment extends BaseViewPagerFragment<VPF01Presenter> implements Demo01Contaract.IDemo01View {
     @Inject UserHelper userHelper;
 
     @Bind(R.id.textView2) TextView textView2;

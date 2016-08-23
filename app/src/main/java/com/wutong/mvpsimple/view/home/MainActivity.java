@@ -2,6 +2,7 @@ package com.wutong.mvpsimple.view.home;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.widget.Button;
 
 import com.wt.load.container.core.WTLoadContainerView;
 import com.wutong.mvpsimple.R;
@@ -11,6 +12,7 @@ import com.wutong.mvpsimple.common.di.module.ActivityModule;
 import com.wutong.mvpsimple.view.demo01.FDemo01Activity;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity<HomePresenter> implements HomeContaract.IHomeView {
     private static final String TAG = MainActivity.class.getName();
@@ -19,6 +21,7 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
     @Bind(R.id.wt_load_container1) WTLoadContainerView wtLoadContainer1;
     @Bind(R.id.wt_load_container2) WTLoadContainerView wtLoadContainer2;
     @Bind(R.id.wt_load_container3) WTLoadContainerView wtLoadContainer3;
+    @Bind(R.id.btn_jump) Button button;
     private Handler handler1 = new Handler();
     private Handler handler2 = new Handler();
     private Handler handler3 = new Handler();
@@ -97,5 +100,7 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
         wtLoadContainer3.showDataView();
     }
 
-
+    @OnClick(R.id.btn_jump) void jump() {
+        startActivity(new Intent(this, FDemo01Activity.class));
+    }
 }
