@@ -26,7 +26,7 @@ public class HomePresenter extends BasePresenter<HomeContaract.IHomeView> implem
     }
 
 
-    @Override public void loadTestData(int time) {
+    @Override public void loadTestData() {
 
         testDataModel.get().getData("17749792015","123456")
                 .compose(mActivity.<BaseEntity>bindUntilEvent(ActivityEvent.DESTROY))
