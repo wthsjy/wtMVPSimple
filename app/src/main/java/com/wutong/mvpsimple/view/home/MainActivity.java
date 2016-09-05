@@ -71,9 +71,6 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
 
 
         mPresenter.loadTestData();
-        mPresenter.loadTestData();
-        mPresenter.loadTestData();
-        mPresenter.loadTestData();
     }
 
     @Override protected void onDestroy() {
