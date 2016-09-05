@@ -12,7 +12,6 @@
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@android:color/holo_red_light"
         app:stl_distributeEvenly="true"
         app:stl_dividerColor="@android:color/transparent"
         app:stl_indicatorAlwaysInCenter="false"

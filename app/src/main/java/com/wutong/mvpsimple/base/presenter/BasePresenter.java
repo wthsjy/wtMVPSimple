@@ -1,4 +1,4 @@
-package com.wutong.mvpsimple.base;
+package com.wutong.mvpsimple.base.presenter;
 
 import com.wutong.mvpsimple.common.utils.LogHelper;
 

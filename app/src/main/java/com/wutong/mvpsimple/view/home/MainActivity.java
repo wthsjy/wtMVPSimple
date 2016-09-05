@@ -1,13 +1,12 @@
 package com.wutong.mvpsimple.view.home;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.widget.Button;
 
 import com.wt.load.container.core.WTLoadContainerView;
 import com.wutong.mvpsimple.R;
-import com.wutong.mvpsimple.base.App;
-import com.wutong.mvpsimple.base.BaseActivity;
+import com.wutong.mvpsimple.base.ClientApp;
+import com.wutong.mvpsimple.base.activity.BaseActivity;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
 import com.wutong.mvpsimple.view.demo01.FDemo01Activity;
 
@@ -32,7 +31,7 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
 
     @Override protected void inject() {
         HomeComponent activityComponent = DaggerHomeComponent.builder()
-                .appComponent(App.getAppComponent())
+                .appComponent(ClientApp.getAppComponent())
                 .activityModule(new ActivityModule(this))
                 .build();
         activityComponent.inject(this);
@@ -67,8 +66,6 @@ public class MainActivity extends BaseActivity<HomePresenter> implements HomeCon
 
             }
         });
-
-
 
         mPresenter.loadTestData();
     }

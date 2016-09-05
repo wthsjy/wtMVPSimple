@@ -17,8 +17,8 @@ public class Demo01VHAdapter extends RecyclerView.Adapter<Demo01VHAdapter.MyView
 
     public Demo01VHAdapter(Context context) {
         this.context = context;
-        strings.add("xxxxa");
-        strings.add("xxxxd");
+        strings.add("xxxx");
+        strings.add("xxxx");
         strings.add("xxxx");
         strings.add("xxxx");
         strings.add("xxxx");

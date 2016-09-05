@@ -7,8 +7,8 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.wutong.mvpsimple.R;
-import com.wutong.mvpsimple.base.App;
-import com.wutong.mvpsimple.base.BaseActivity;
+import com.wutong.mvpsimple.base.ClientApp;
+import com.wutong.mvpsimple.base.activity.BaseActivity;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
 
 import butterknife.Bind;
@@ -23,7 +23,7 @@ public class FDemo01Activity extends BaseActivity<Demo01Presenter> {
 
     @Override protected void inject() {
         Demo01Component activityComponent = DaggerDemo01Component.builder()
-                .appComponent(App.getAppComponent())
+                .appComponent(ClientApp.getAppComponent())
                 .activityModule(new ActivityModule(this))
                 .build();
         activityComponent.inject(this);

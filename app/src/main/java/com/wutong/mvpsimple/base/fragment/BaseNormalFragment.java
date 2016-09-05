@@ -1,4 +1,4 @@
-package com.wutong.mvpsimple.base;
+package com.wutong.mvpsimple.base.fragment;
 
 /**
  * Created by 吴同 on 2016/8/23 0023.
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.trello.rxlifecycle.components.support.RxFragment;
+import com.wutong.mvpsimple.base.presenter.BasePresenter;
+import com.wutong.mvpsimple.base.view.IView;
 
 import javax.inject.Inject;
 

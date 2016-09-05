@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:clientApp="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -32,11 +32,11 @@
                 android:id="@+id/wt_load_container1"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                app:childDataViewId="@+id/child01"
-                app:dataLoadingView="@layout/wt_load_detault_data_loading_view"
-                app:networkErrorView="@layout/wt_load_detault_network_error_view"
-                app:noDataView="@layout/wt_load_detault_no_data_view"
-                app:showLoadingViewInitialize="true">
+                clientApp:childDataViewId="@+id/child01"
+                clientApp:dataLoadingView="@layout/wt_load_detault_data_loading_view"
+                clientApp:networkErrorView="@layout/wt_load_detault_network_error_view"
+                clientApp:noDataView="@layout/wt_load_detault_no_data_view"
+                clientApp:showLoadingViewInitialize="true">
 
                 <TextView
                     android:id="@+id/child01"
@@ -51,9 +51,9 @@
                 android:id="@+id/wt_load_container2"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:childDataViewId="@+id/child02"
+                clientApp:childDataViewId="@+id/child02"
                 android:background="@android:color/holo_red_light"
-                app:showLoadingViewInitialize="true">
+                clientApp:showLoadingViewInitialize="true">
 
                 <TextView
                     android:id="@+id/child02"
@@ -67,8 +67,8 @@
                 android:id="@+id/wt_load_container3"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:childDataViewId="@+id/child03"
-                app:showLoadingViewInitialize="true">
+                clientApp:childDataViewId="@+id/child03"
+                clientApp:showLoadingViewInitialize="true">
 
                 <TextView
                     android:id="@+id/child03"

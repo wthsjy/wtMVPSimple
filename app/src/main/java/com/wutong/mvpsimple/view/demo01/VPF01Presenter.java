@@ -2,7 +2,7 @@ package com.wutong.mvpsimple.view.demo01;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.wutong.mvpsimple.data.model.TestDataModel;
-import com.wutong.mvpsimple.base.BasePresenter;
+import com.wutong.mvpsimple.base.presenter.BasePresenter;
 
 import javax.inject.Inject;
 

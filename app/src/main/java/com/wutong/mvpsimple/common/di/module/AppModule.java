@@ -3,7 +3,7 @@ package com.wutong.mvpsimple.common.di.module;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.wutong.mvpsimple.base.App;
+import com.wutong.mvpsimple.base.ClientApp;
 import com.wutong.mvpsimple.common.utils.DBHelper;
 import com.wutong.mvpsimple.common.utils.ToastHelper;
 import com.wutong.mvpsimple.common.utils.UserHelper;
@@ -18,30 +18,30 @@ import dagger.Provides;
  */
 @Module
 public class AppModule {
-    private final App app;
+    private final ClientApp clientApp;
 
-    public AppModule(@NonNull App app) {
-        this.app = app;
+    public AppModule(@NonNull ClientApp clientApp) {
+        this.clientApp = clientApp;
     }
 
     @Singleton @Provides
     public Context provideContext() {
-        return app;
+        return clientApp;
     }
 
     @Singleton @Provides
     public UserHelper provideUserhelper() {
-        return new UserHelper(app);
+        return new UserHelper(clientApp);
     }
 
     @Singleton @Provides
     public DBHelper provideDBHelper() {
-        return new DBHelper(app);
+        return new DBHelper(clientApp);
     }
 
     @Singleton @Provides
     public ToastHelper provideToastHelper() {
-        return new ToastHelper(app);
+        return new ToastHelper(clientApp);
     }
 
 

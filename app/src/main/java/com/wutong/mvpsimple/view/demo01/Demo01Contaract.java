@@ -1,7 +1,7 @@
 package com.wutong.mvpsimple.view.demo01;
 
-import com.wutong.mvpsimple.base.IPresenter;
-import com.wutong.mvpsimple.base.IView;
+import com.wutong.mvpsimple.base.presenter.IPresenter;
+import com.wutong.mvpsimple.base.view.IView;
 
 /**
  * Created by 吴同 on 2016/8/16 0016.

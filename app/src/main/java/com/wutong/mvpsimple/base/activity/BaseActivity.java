@@ -1,10 +1,10 @@
-package com.wutong.mvpsimple.base;
+package com.wutong.mvpsimple.base.activity;
 
 import android.os.Bundle;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
-
-import org.greenrobot.eventbus.EventBus;
+import com.wutong.mvpsimple.base.presenter.BasePresenter;
+import com.wutong.mvpsimple.base.view.IView;
 
 import javax.inject.Inject;
 

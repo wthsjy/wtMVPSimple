@@ -2,7 +2,7 @@ package com.wutong.mvpsimple.view.home;
 
 import com.trello.rxlifecycle.ActivityEvent;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
-import com.wutong.mvpsimple.base.BasePresenter;
+import com.wutong.mvpsimple.base.presenter.BasePresenter;
 import com.wutong.mvpsimple.common.utils.okhttp.BaseRetrofitSubscriber;
 import com.wutong.mvpsimple.data.entity.BaseEntity;
 import com.wutong.mvpsimple.data.model.TestDataModel;
