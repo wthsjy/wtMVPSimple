@@ -27,7 +27,7 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         initDagger2();
-        initEventBus();
+
 
     }
 
@@ -47,18 +47,7 @@ public class App extends Application {
     }
 
 
-    private void initEventBus() {
-        EventBus.getDefault().register(this);
-    }
 
-    @Subscribe
-    public synchronized void onBusTokenError(OnBusTokenError busTokenError) {
-        LogHelper.d(TAG, "xxxxxxxxxxxxxx" + System.currentTimeMillis());
-        Intent intent = new Intent(this, FDemo01Activity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP
-        |Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
 
-    }
 
 }

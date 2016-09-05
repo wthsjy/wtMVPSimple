@@ -1,11 +1,8 @@
 package com.wutong.mvpsimple.view.home;
 
-import android.os.Handler;
-
 import com.trello.rxlifecycle.ActivityEvent;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.wutong.mvpsimple.base.BasePresenter;
-import com.wutong.mvpsimple.common.utils.LogHelper;
 import com.wutong.mvpsimple.common.utils.okhttp.BaseRetrofitSubscriber;
 import com.wutong.mvpsimple.data.entity.BaseEntity;
 import com.wutong.mvpsimple.data.model.TestDataModel;
@@ -31,7 +28,7 @@ public class HomePresenter extends BasePresenter<HomeContaract.IHomeView> implem
 
     @Override public void loadTestData(int time) {
 
-        testDataModel.get().getData(time)
+        testDataModel.get().getData("17749792015","123456")
                 .compose(mActivity.<BaseEntity>bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(new BaseRetrofitSubscriber<BaseEntity>() {
 

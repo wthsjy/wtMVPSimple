@@ -1,7 +1,5 @@
 package com.wutong.mvpsimple.view.demo01;
 
-import android.os.Handler;
-
 import com.trello.rxlifecycle.ActivityEvent;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.wutong.mvpsimple.base.BasePresenter;
@@ -30,7 +28,7 @@ public class Demo01Presenter extends BasePresenter<Demo01Contaract.IDemo01View> 
 
     @Override public void loadTestData() {
 
-        testDataModel.get().getData(3000)
+        testDataModel.get().getData("17749792015", "123456")
                 .compose(mActivity.<BaseEntity>bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(new BaseRetrofitSubscriber<BaseEntity>() {
 

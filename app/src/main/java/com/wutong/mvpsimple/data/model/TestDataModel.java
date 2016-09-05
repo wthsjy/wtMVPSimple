@@ -27,8 +27,8 @@ public class TestDataModel {
     }
 
 
-    public Observable<BaseEntity> getData(int time) {
-        return apiService.getData(time).subscribeOn(Schedulers.io())
+    public Observable<BaseEntity> getData(String username,String password) {
+        return apiService.getData(username,password).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
 
     }
