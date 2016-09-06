@@ -24,4 +24,5 @@ dependencies {
     compile 'com.android.support:design:' + rootProject.ext.androidSupportVersion
     compile 'com.jcodecraeer:xrecyclerview:1.2.7'
 
+
 }

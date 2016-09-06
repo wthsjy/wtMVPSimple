@@ -13,6 +13,8 @@ import com.wutong.mvpsimple.base.fragment.BaseViewPagerFragment;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
 import com.wutong.mvpsimple.common.utils.UserHelper;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import butterknife.Bind;
@@ -40,7 +42,11 @@ public class DemoVP01Fragment extends BaseViewPagerFragment<VPF01Presenter> impl
         //设置布局管理器
         mRecyclerView.setLayoutManager(layoutManager);
         //设置adapter
-        Demo01VHAdapter adapter = new Demo01VHAdapter(getContext());
+        ArrayList<String> strings = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            strings.add("xxxx" + i);
+        }
+        Demo01VHAdapter adapter = new Demo01VHAdapter(getActivity());
         mRecyclerView.setAdapter(adapter);
         //设置Item增加、移除动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -64,7 +70,6 @@ public class DemoVP01Fragment extends BaseViewPagerFragment<VPF01Presenter> impl
                 }, 5000);
             }
         });
-
 
 
     }

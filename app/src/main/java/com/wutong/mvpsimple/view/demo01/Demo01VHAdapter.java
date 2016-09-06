@@ -3,62 +3,44 @@ package com.wutong.mvpsimple.view.demo01;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.wutong.mvpsimple.R;
+import com.wutong.mvpsimple.base.adapter.BaseSingleRVAdapter;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by 吴同 on 2016/8/23 0023.
  */
-public class Demo01VHAdapter extends RecyclerView.Adapter<Demo01VHAdapter.MyViewHolder> {
-    private final Context context;
-    private ArrayList<String> strings = new ArrayList<>();
+public class Demo01VHAdapter extends BaseSingleRVAdapter<String, Demo01VHAdapter.ViewHolder> {
+
 
     public Demo01VHAdapter(Context context) {
-        this.context = context;
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx");
-        strings.add("xxxx1");
-        strings.add("xxxx2");
+        super(context);
     }
 
-    @Override public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        TextView textView = new TextView(context);
-        textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 160));
-        return new MyViewHolder(textView);
+    @Override protected ViewHolder getVH(View itemView) {
+        return new ViewHolder(itemView);
     }
 
-    @Override public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.setData(strings.get(position));
+    @Override protected int getItemViewLayoutId() {
+        return R.layout.item_demo01_layout;
     }
 
-    @Override public int getItemCount() {
-        return strings.size();
+
+    @Override protected void bindData(ViewHolder holder, String s, int position) {
+
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public MyViewHolder(View itemView) {
-            super(itemView);
-        }
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.textView) TextView textView;
 
-        public void setData(String s) {
-            ((TextView) itemView).setText(s);
+        ViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
         }
     }
 }
