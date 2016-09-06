@@ -1,4 +1,4 @@
 ext{
-  endpoint = '"http://10.0.0.98:80/boot05/"'
+  endpoint = '"http://www.wt52hs.cn/"'
   tokenErrorCode = '"401"'
 }

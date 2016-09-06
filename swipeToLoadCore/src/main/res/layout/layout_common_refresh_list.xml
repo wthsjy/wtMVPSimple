@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.dinuscxj.refresh.RecyclerRefreshLayout
+<com.jcodecraeer.xrecyclerview.XRecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/refresh_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</com.dinuscxj.refresh.RecyclerRefreshLayout>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/recycler_view"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"/>

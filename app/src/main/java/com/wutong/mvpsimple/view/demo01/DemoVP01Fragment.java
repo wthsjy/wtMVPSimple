@@ -3,10 +3,9 @@ package com.wutong.mvpsimple.view.demo01;
 import android.os.Handler;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
-import com.dinuscxj.refresh.RecyclerRefreshLayout;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.ClientApp;
@@ -27,8 +26,7 @@ public class DemoVP01Fragment extends BaseViewPagerFragment<VPF01Presenter> impl
     @Inject UserHelper userHelper;
 
     @Bind(R.id.textView2) TextView textView2;
-    @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
-    @Bind(R.id.refresh_layout) RecyclerRefreshLayout refreshLayout;
+    @Bind(R.id.recycler_view) XRecyclerView mRecyclerView;
 
     @Override public int getLayutResId() {
         return R.layout.fragment_demo01;
@@ -47,16 +45,26 @@ public class DemoVP01Fragment extends BaseViewPagerFragment<VPF01Presenter> impl
         //设置Item增加、移除动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         adapter.notifyDataSetChanged();
-
-        refreshLayout.setOnRefreshListener(new RecyclerRefreshLayout.OnRefreshListener() {
+        mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override public void onRefresh() {
                 new Handler().postDelayed(new Runnable() {
                     @Override public void run() {
-                        refreshLayout.setRefreshing(false);
+                        mRecyclerView.refreshComplete();
+                        mRecyclerView.setLoadingMoreEnabled(true);
+                    }
+                }, 5000);
+            }
+
+            @Override public void onLoadMore() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+                        mRecyclerView.loadMoreComplete();
+                        mRecyclerView.setLoadingMoreEnabled(false);
                     }
                 }, 5000);
             }
         });
+
 
 
     }

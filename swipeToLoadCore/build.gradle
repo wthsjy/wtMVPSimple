@@ -21,5 +21,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.androidSupportVersion
+    compile 'com.android.support:design:' + rootProject.ext.androidSupportVersion
+    compile 'com.jcodecraeer:xrecyclerview:1.2.7'
 
 }
