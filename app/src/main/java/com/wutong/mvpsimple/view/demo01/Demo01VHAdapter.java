@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.adapter.BaseSingleRVAdapter;
+import com.wutong.mvpsimple.data.entity.BaseEntity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,6 +29,8 @@ public class Demo01VHAdapter extends BaseSingleRVAdapter<String, Demo01VHAdapter
     @Override protected int getItemViewLayoutId() {
         return R.layout.item_demo01_layout;
     }
+
+
 
 
     @Override protected void bindData(ViewHolder holder, String s, int position) {
