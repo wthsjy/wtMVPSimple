@@ -1,4 +1,4 @@
-package com.wutong.mvpsimple.view.demo01;
+package com.wutong.mvpsimple.view.demo01.view;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -10,6 +10,9 @@ import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.ClientApp;
 import com.wutong.mvpsimple.base.activity.BaseActivity;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
+import com.wutong.mvpsimple.view.demo01.DaggerDemo01Component;
+import com.wutong.mvpsimple.view.demo01.Demo01Component;
+import com.wutong.mvpsimple.view.demo01.presenter.Demo01Presenter;
 
 import butterknife.Bind;
 
@@ -36,7 +39,7 @@ public class FDemo01Activity extends BaseActivity<Demo01Presenter> {
 
     @Override protected void init() {
         FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 20; i++) {
             Bundle bundle = new Bundle();
             bundle.putString("key", i + "");
             creator.add("0" + i, DemoVP01Fragment.class, bundle);

@@ -9,22 +9,27 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 /**
+ * 单个viewtype 类型的通用adapter
  * Created by 吴同 on 2016/9/6 0006.
  */
-public abstract class BaseSingleRVAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+public abstract class BaseSingleRVAdapter<E, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
 
     protected Context mContext;
-    protected ArrayList<T> mlist = new ArrayList<>();
+    protected ArrayList<E> mlist = new ArrayList<>();
 
     public BaseSingleRVAdapter(Context context) {
         mContext = context;
     }
 
-    protected void setData(ArrayList<T> list) {
+    public void setData(ArrayList<E> list) {
         if (list != null) {
             mlist = list;
             notifyDataSetChanged();
         }
+    }
+
+    public ArrayList<E> getData() {
+        return mlist;
     }
 
     protected abstract VH getVH(View itemView);
@@ -35,22 +40,18 @@ public abstract class BaseSingleRVAdapter<T, VH extends RecyclerView.ViewHolder>
     }
 
 
-
-
     @Override public void onBindViewHolder(VH holder, int position) {
-        bindData(holder,mlist.get(position),position);
+        bindData(holder, mlist.get(position), position);
     }
 
 
-
-
     protected abstract int getItemViewLayoutId();
-    protected abstract void bindData(VH holder,T t,int position);
+
+    protected abstract void bindData(VH holder, E t, int position);
 
     @Override public int getItemCount() {
         return mlist.size();
     }
-
 
 
 }

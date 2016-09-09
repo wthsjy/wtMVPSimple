@@ -8,7 +8,7 @@ import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.ClientApp;
 import com.wutong.mvpsimple.base.activity.BaseActivity;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
-import com.wutong.mvpsimple.view.demo01.FDemo01Activity;
+import com.wutong.mvpsimple.view.demo01.view.FDemo01Activity;
 
 import butterknife.Bind;
 import butterknife.OnClick;

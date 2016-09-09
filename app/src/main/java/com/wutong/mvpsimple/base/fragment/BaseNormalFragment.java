@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseNormalFragment<T extends BasePresenter> extends RxFragment implements IView {
     protected View mRootView;
-    @Inject T mPresenter;
+    @Inject public T mPresenter;
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,12 +61,12 @@ public abstract class BaseNormalFragment<T extends BasePresenter> extends RxFrag
      *
      * @return
      */
-    public abstract int getLayutResId();
+    protected abstract int getLayutResId();
 
     /**
      * 界面展示后初始化，只执行一次
      */
-    public abstract void init();
+    protected abstract void init();
 
     /**
      * 注入

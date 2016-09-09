@@ -1,4 +1,4 @@
-package com.wutong.mvpsimple.view.demo01;
+package com.wutong.mvpsimple.view.demo01.view;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.adapter.BaseSingleRVAdapter;
-import com.wutong.mvpsimple.data.entity.BaseEntity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,7 +33,7 @@ public class Demo01VHAdapter extends BaseSingleRVAdapter<String, Demo01VHAdapter
 
 
     @Override protected void bindData(ViewHolder holder, String s, int position) {
-
+        holder.textView.setText(s);
     }
 
 

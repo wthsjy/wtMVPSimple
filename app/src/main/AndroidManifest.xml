@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.demo01.FDemo01Activity"
+        <activity android:name=".view.demo01.view.FDemo01Activity"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"/>
     </application>

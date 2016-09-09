@@ -15,9 +15,10 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 
 /**
- * 用于viewpager 中的 fragment
+ * 用于viewpager 中的 fragment,暂时废弃，使用BaseNormal 就可以了
  * Created by 吴同 on 2016/8/16 0016.
  */
+@Deprecated
 public abstract class BaseViewPagerFragment<T extends BasePresenter> extends RxFragment implements IView {
     protected View mRootView;
     protected boolean isVisibleToUser = false;

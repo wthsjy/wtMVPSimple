@@ -1,6 +1,7 @@
 package com.wutong.mvpsimple.view.demo01;
 
 import com.wutong.mvpsimple.base.presenter.IPresenter;
+import com.wutong.mvpsimple.base.view.IRefreshCompleteView;
 import com.wutong.mvpsimple.base.view.IView;
 
 /**
@@ -8,12 +9,12 @@ import com.wutong.mvpsimple.base.view.IView;
  */
 public class Demo01Contaract {
 
-    public interface IDemo01View extends IView {
-        void loadSuccess();
+    public interface IDemo01View<E> extends IRefreshCompleteView<E>{
+
     }
 
     public interface IDemo01Presenter extends IPresenter {
-        void loadTestData();
+
 
     }
 }
