@@ -9,7 +9,7 @@
         android:name=".base.ClientApp"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.wutong.mvpsimple.view.home.MainActivity"
+        <activity android:name=".view.home.view.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>

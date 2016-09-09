@@ -24,10 +24,6 @@ public class DemoVP01Fragment extends BaseNormalListFragment<VPF01Presenter, Dem
         return new Demo01VHAdapter(getContext());
     }
 
-    @Override protected void init() {
-        super.init();
-
-    }
 
     @Override public void onRefresh() {
         mPresenter.getNew(null);

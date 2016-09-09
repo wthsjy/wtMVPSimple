@@ -5,6 +5,7 @@ import com.wutong.mvpsimple.common.di.component.AppComponent;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
 import com.wutong.mvpsimple.common.di.scope.ActivityScope;
 import com.wutong.mvpsimple.common.utils.SnakeHelper;
+import com.wutong.mvpsimple.view.home.view.MainActivity;
 
 import dagger.Component;
 

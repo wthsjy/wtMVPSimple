@@ -1,4 +1,4 @@
-package com.wutong.mvpsimple.view.home;
+package com.wutong.mvpsimple.view.home.view;
 
 import android.content.Intent;
 import android.widget.Button;
@@ -9,6 +9,10 @@ import com.wutong.mvpsimple.base.ClientApp;
 import com.wutong.mvpsimple.base.activity.BaseActivity;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
 import com.wutong.mvpsimple.view.demo01.view.FDemo01Activity;
+import com.wutong.mvpsimple.view.home.DaggerHomeComponent;
+import com.wutong.mvpsimple.view.home.HomeComponent;
+import com.wutong.mvpsimple.view.home.HomeContaract;
+import com.wutong.mvpsimple.view.home.presenter.HomePresenter;
 
 import butterknife.Bind;
 import butterknife.OnClick;
