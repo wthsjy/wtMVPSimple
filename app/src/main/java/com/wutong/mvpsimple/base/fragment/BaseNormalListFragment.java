@@ -1,5 +1,6 @@
 package com.wutong.mvpsimple.base.fragment;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -7,9 +8,12 @@ import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.adapter.BaseSingleRVAdapter;
 import com.wutong.mvpsimple.base.presenter.BaseListPresenter;
 import com.wutong.mvpsimple.base.view.IRefreshCompleteView;
+import com.wutong.mvpsimple.common.utils.ToastHelper;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 
@@ -21,6 +25,7 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
         extends BaseNormalFragment<T> implements XRecyclerView.LoadingListener, IRefreshCompleteView<E> {
     @Bind(R.id.recycler_view) XRecyclerView mRecyclerView;
     protected AD mAdapter;
+
 
     @Override protected int getLayutResId() {
         return R.layout.layout_common_refresh_list;
@@ -35,8 +40,10 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
         mAdapter = getRVAdapter();
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLoadingListener(this);
-        mRecyclerView.setRefreshing(true);
         setXRecyclerViewRefreshMode(true, true);
+        mRecyclerView.setRefreshing(true);
+
+
     }
 
     /**
@@ -64,6 +71,7 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
 
     @Override public void getNewSuccess(ArrayList<E> list) {
         mRecyclerView.refreshComplete();
+        mRecyclerView.setLoadingMoreEnabled(true);
         if (list == null) {
             return;
         }
@@ -73,7 +81,8 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
 
     @Override public void getLoadMoreSuccess(ArrayList<E> list) {
         mRecyclerView.loadMoreComplete();
-        if (list == null) {
+        if (list == null || list.size() == 0) {
+            mRecyclerView.setLoadingMoreEnabled(false);
             return;
         }
         ArrayList<E> oldList = mAdapter.getData();

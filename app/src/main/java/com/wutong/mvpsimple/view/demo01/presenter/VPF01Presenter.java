@@ -42,14 +42,21 @@ public class VPF01Presenter extends BaseListPresenter<Demo01Contaract.IDemo01Vie
         },3000);
 
     }
-
+int index = 0;
     @Override public void loadMore(HashMap<String, Object> map) {
         new Handler().postDelayed(new Runnable() {
             @Override public void run() {
                 ArrayList<String> list = new ArrayList<>();
-                for (int i = 0;i<20;i++){
-                    list.add(i+"eeeeexxxxxxss");
+                index++;
+                if (index <= 3){
+                    for (int i = 0;i<20;i++){
+                        list.add(i+"eeeeexxxxxxss");
+                    }
                 }
+                if (index == 5){
+                    index = 0;
+                }
+
                 mView.getLoadMoreSuccess(list);
             }
         },3000);
