@@ -25,13 +25,6 @@ public class DemoVP01Fragment extends BaseNormalListFragment<VPF01Presenter, Dem
     }
 
 
-    @Override public void onRefresh() {
-        mPresenter.getNew(null);
-    }
-
-    @Override public void onLoadMore() {
-        mPresenter.loadMore(null);
-    }
 
 
     @Override protected void inject() {
@@ -40,5 +33,13 @@ public class DemoVP01Fragment extends BaseNormalListFragment<VPF01Presenter, Dem
                 .activityModule(new ActivityModule((RxAppCompatActivity) getActivity()))
                 .build();
         activityComponent.inject(this);
+    }
+
+    @Override public void getNew() {
+        mPresenter.getNew(null);
+    }
+
+    @Override public void loadMore() {
+        mPresenter.loadMore(null);
     }
 }

@@ -39,7 +39,7 @@ public class FDemo01Activity extends BaseActivity<Demo01Presenter> {
 
     @Override protected void init() {
         FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 8; i++) {
             Bundle bundle = new Bundle();
             bundle.putString("key", i + "");
             creator.add("0" + i, DemoVP01Fragment.class, bundle);

@@ -4,6 +4,7 @@ import android.os.Handler;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.wutong.mvpsimple.base.presenter.BaseListPresenter;
+import com.wutong.mvpsimple.common.utils.LogHelper;
 import com.wutong.mvpsimple.data.model.TestDataModel;
 import com.wutong.mvpsimple.view.demo01.Demo01Contaract;
 
@@ -34,12 +35,12 @@ public class VPF01Presenter extends BaseListPresenter<Demo01Contaract.IDemo01Vie
             @Override public void run() {
                 ArrayList<String> list = new ArrayList<>();
               for (int i = 0;i<40;i++){
-                  list.add(i+"xxxxxxss");
+                  list.add(i+"xxxxxxss"+Math.random());
               }
-
+                LogHelper.d(TAG,"getNew()");
                 mView.getNewSuccess(list);
             }
-        },3000);
+        },1000);
 
     }
 int index = 0;
@@ -50,7 +51,7 @@ int index = 0;
                 index++;
                 if (index <= 3){
                     for (int i = 0;i<20;i++){
-                        list.add(i+"eeeeexxxxxxss");
+                        list.add(i+"eeeeexxxxxxss"+Math.random());
                     }
                 }
                 if (index == 5){
@@ -59,6 +60,6 @@ int index = 0;
 
                 mView.getLoadMoreSuccess(list);
             }
-        },3000);
+        },1000);
     }
 }

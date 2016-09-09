@@ -1,8 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.jcodecraeer.xrecyclerview.XRecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/recycler_view"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"/>
+<com.ybao.pullrefreshview.layout.PullRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   android:id="@+id/pullRefreshLayout"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:background="@android:color/holo_blue_bright">
+
+    <com.ybao.pullrefreshview.simple.view.NormalHeaderView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <com.ybao.pullrefreshview.simple.view.NormalFooterView
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white" />
+
+</com.ybao.pullrefreshview.layout.PullRefreshLayout>
