@@ -1,11 +1,10 @@
 package com.wutong.mvpsimple.view.demo01.presenter;
 
-import android.os.Handler;
-
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.wutong.mvpsimple.base.presenter.BaseListPresenter;
-import com.wutong.mvpsimple.common.utils.LogHelper;
-import com.wutong.mvpsimple.data.model.TestDataModel;
+import com.wutong.mvpsimple.common.utils.okhttp.BaseRetrofitSubscriber;
+import com.wutong.mvpsimple.data.entity.UserListEntity;
+import com.wutong.mvpsimple.data.model.UserDataModel;
 import com.wutong.mvpsimple.view.demo01.Demo01Contaract;
 
 import java.util.ArrayList;
@@ -22,7 +21,8 @@ public class VPF01Presenter extends BaseListPresenter<Demo01Contaract.IDemo01Vie
     private final String TAG = VPF01Presenter.class.getSimpleName();
     private RxAppCompatActivity mActivity;
 
-    @Inject Lazy<TestDataModel> testDataModel;
+    @Inject Lazy<UserDataModel> testDataModel;
+    private int page = 1;
 
 
     @Inject public VPF01Presenter(RxAppCompatActivity activity) {
@@ -31,35 +31,50 @@ public class VPF01Presenter extends BaseListPresenter<Demo01Contaract.IDemo01Vie
 
 
     @Override public void getNew(HashMap<String, Object> map) {
-        new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                ArrayList<String> list = new ArrayList<>();
-              for (int i = 0;i<40;i++){
-                  list.add(i+"xxxxxxss"+Math.random());
-              }
-                LogHelper.d(TAG,"getNew()");
-                mView.getNewSuccess(list);
-            }
-        },3000);
+        testDataModel.get().getUserList(1)
+                .subscribe(new BaseRetrofitSubscriber<UserListEntity>() {
+                    @Override public void onStart() {
 
-    }
-int index = 0;
-    @Override public void loadMore(HashMap<String, Object> map) {
-        new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                ArrayList<String> list = new ArrayList<>();
-                index++;
-                if (index <= 3){
-                    for (int i = 0;i<20;i++){
-                        list.add(i+"eeeeexxxxxxss"+Math.random());
                     }
-                }
-                if (index == 5){
-                    index = 0;
-                }
 
-                mView.getLoadMoreSuccess(list);
-            }
-        },3000);
+                    @Override protected void onSuccess(UserListEntity o) {
+                        page = 1;
+                        mView.getNewSuccess((ArrayList) o.getData());
+                    }
+
+                    @Override public void onHttpError() {
+                        mView.getListFail();
+                    }
+
+                    @Override protected void onUnknowError(Throwable e) {
+                        mView.getListFail();
+                    }
+                });
+
     }
+
+
+    @Override public void loadMore(HashMap<String, Object> map) {
+        testDataModel.get().getUserList(page + 1)
+                .subscribe(new BaseRetrofitSubscriber<UserListEntity>() {
+                    @Override public void onStart() {
+
+                    }
+
+                    @Override protected void onSuccess(UserListEntity o) {
+                        page = page + 1;
+                        mView.getLoadMoreSuccess((ArrayList) o.getData());
+                    }
+
+                    @Override public void onHttpError() {
+                        mView.getListFail();
+                    }
+
+                    @Override protected void onUnknowError(Throwable e) {
+                        mView.getListFail();
+                    }
+                });
+    }
+
+
 }

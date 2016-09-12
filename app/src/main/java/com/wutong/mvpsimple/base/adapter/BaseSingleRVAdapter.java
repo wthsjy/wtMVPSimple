@@ -41,13 +41,13 @@ public abstract class BaseSingleRVAdapter<E, VH extends RecyclerView.ViewHolder>
 
 
     @Override public void onBindViewHolder(VH holder, int position) {
-        bindData(holder, mlist.get(position), position);
+        bindData(mContext,holder, mlist.get(position), position);
     }
 
 
     protected abstract int getItemViewLayoutId();
 
-    protected abstract void bindData(VH holder, E t, int position);
+    protected abstract void bindData(Context context,VH holder, E t, int position);
 
     @Override public int getItemCount() {
         return mlist.size();

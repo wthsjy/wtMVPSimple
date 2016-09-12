@@ -7,7 +7,8 @@ import java.io.Serializable;
  */
 public class BaseEntity implements Serializable {
     public String code;
-    public String msg;
+    public String t;
+    public String message;
 
     public String getCode() {
         return code;
@@ -17,11 +18,19 @@ public class BaseEntity implements Serializable {
         this.code = code;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getT() {
+        return t;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setT(String t) {
+        this.t = t;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

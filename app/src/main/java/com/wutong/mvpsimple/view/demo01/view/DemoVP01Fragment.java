@@ -5,6 +5,7 @@ import com.wutong.mvpsimple.base.ClientApp;
 import com.wutong.mvpsimple.base.fragment.BaseNormalListFragment;
 import com.wutong.mvpsimple.common.di.module.ActivityModule;
 import com.wutong.mvpsimple.common.utils.UserHelper;
+import com.wutong.mvpsimple.data.entity.element.UserInfo;
 import com.wutong.mvpsimple.view.demo01.DaggerDemo01Component;
 import com.wutong.mvpsimple.view.demo01.Demo01Component;
 import com.wutong.mvpsimple.view.demo01.Demo01Contaract;
@@ -16,7 +17,7 @@ import javax.inject.Inject;
 /**
  * Created by 吴同 on 2016/8/16 0016.
  */
-public class DemoVP01Fragment extends BaseNormalListFragment<VPF01Presenter, Demo01VHAdapter, String> implements Demo01Contaract.IDemo01View<String> {
+public class DemoVP01Fragment extends BaseNormalListFragment<VPF01Presenter, Demo01VHAdapter, UserInfo> implements Demo01Contaract.IDemo01View<UserInfo> {
     @Inject UserHelper userHelper;
 
 
