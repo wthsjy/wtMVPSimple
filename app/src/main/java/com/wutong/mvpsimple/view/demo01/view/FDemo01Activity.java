@@ -39,7 +39,7 @@ public class FDemo01Activity extends BaseActivity<Demo01Presenter> {
 
     @Override protected void init() {
         FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 200; i++) {
             Bundle bundle = new Bundle();
             bundle.putString("key", i + "");
             creator.add("0" + i, DemoVP01Fragment.class, bundle);
@@ -51,6 +51,11 @@ public class FDemo01Activity extends BaseActivity<Demo01Presenter> {
                 .create());
         viewPager.setAdapter(adapter);
         smartTabLayout.setViewPager(viewPager);
+        smartTabLayout.setOnTabClickListener(new SmartTabLayout.OnTabClickListener() {
+            @Override public void onTabClicked(int position) {
+                viewPager.setCurrentItem(position,false);
+            }
+        });
     }
 
 
