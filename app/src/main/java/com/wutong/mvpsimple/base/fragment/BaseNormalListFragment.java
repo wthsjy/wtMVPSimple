@@ -2,16 +2,13 @@ package com.wutong.mvpsimple.base.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
+import com.dinuscxj.refresh.RecyclerRefreshLayout;
 import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.adapter.BaseSingleRVAdapter;
 import com.wutong.mvpsimple.base.presenter.BaseListPresenter;
 import com.wutong.mvpsimple.base.view.IRefreshCompleteView;
-import com.ybao.pullrefreshview.layout.BaseFooterView;
-import com.ybao.pullrefreshview.layout.BaseHeaderView;
-import com.ybao.pullrefreshview.layout.PullRefreshLayout;
-import com.ybao.pullrefreshview.simple.view.NormalFooterView;
-import com.ybao.pullrefreshview.simple.view.NormalHeaderView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,11 +20,10 @@ import butterknife.Bind;
  * Created by 吴同 on 2016/9/9 0009.
  */
 public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD extends BaseSingleRVAdapter, E extends Serializable>
-        extends BaseNormalFragment<T> implements IRefreshCompleteView<E>, BaseHeaderView.OnRefreshListener, BaseFooterView.OnLoadListener {
+        extends BaseNormalFragment<T> implements IRefreshCompleteView<E>, RecyclerRefreshLayout.OnRefreshListener {
     @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
-    @Bind(R.id.pullRefreshLayout) PullRefreshLayout pullRefreshLayout;
-    @Bind(R.id.header) NormalHeaderView header;
-    @Bind(R.id.footer) NormalFooterView footer;
+    @Bind(R.id.pullRefreshLayout) RecyclerRefreshLayout pullRefreshLayout;
+
     protected AD mAdapter;
 
 
@@ -43,10 +39,12 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
         //设置adapter
         mAdapter = getRVAdapter();
         mRecyclerView.setAdapter(mAdapter);
+        pullRefreshLayout.setOnRefreshListener(this);
 
-        header.setOnRefreshListener(this);
-        footer.setOnLoadListener(this);
-        header.startRefresh();
+        getNew();
+        pullRefreshLayout.setRefreshing(true);
+
+
     }
 
 
@@ -63,7 +61,7 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
     @Override protected abstract void inject();
 
     @Override public void getNewSuccess(ArrayList<E> list) {
-        header.stopRefresh();
+        pullRefreshLayout.setRefreshing(false);
         if (list == null) {
             return;
         }
@@ -72,7 +70,7 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
     }
 
     @Override public void getLoadMoreSuccess(ArrayList<E> list) {
-        footer.stopLoad();
+        pullRefreshLayout.setRefreshing(false);
         if (list == null || list.size() == 0) {
             return;
         }
@@ -83,8 +81,7 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
     }
 
     @Override public void getListFail() {
-        footer.stopLoad();
-        header.stopRefresh();
+        pullRefreshLayout.setRefreshing(false);
     }
 
     public abstract void getNew();
@@ -92,11 +89,7 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
     public abstract void loadMore();
 
 
-    @Override public void onRefresh(BaseHeaderView baseHeaderView) {
+    @Override public void onRefresh() {
         getNew();
-    }
-
-    @Override public void onLoad(BaseFooterView baseFooterView) {
-        loadMore();
     }
 }

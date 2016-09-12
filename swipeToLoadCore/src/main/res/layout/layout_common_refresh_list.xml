@@ -1,19 +1,11 @@
-<com.ybao.pullrefreshview.layout.PullRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dinuscxj.refresh.RecyclerRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    android:id="@+id/pullRefreshLayout"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    android:background="@android:color/holo_blue_bright">
 
-    <com.ybao.pullrefreshview.simple.view.NormalHeaderView
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 
-    <com.ybao.pullrefreshview.simple.view.NormalFooterView
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 
     <android.support.v7.widget.RecyclerView
@@ -22,4 +14,4 @@
         android:layout_height="match_parent"
         android:background="@android:color/white" />
 
-</com.ybao.pullrefreshview.layout.PullRefreshLayout>
+</com.dinuscxj.refresh.RecyclerRefreshLayout>

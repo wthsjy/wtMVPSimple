@@ -40,7 +40,7 @@ public class VPF01Presenter extends BaseListPresenter<Demo01Contaract.IDemo01Vie
                 LogHelper.d(TAG,"getNew()");
                 mView.getNewSuccess(list);
             }
-        },1000);
+        },3000);
 
     }
 int index = 0;
@@ -60,6 +60,6 @@ int index = 0;
 
                 mView.getLoadMoreSuccess(list);
             }
-        },1000);
+        },3000);
     }
 }
