@@ -23,4 +23,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.androidSupportVersion
     compile 'com.android.support:design:' + rootProject.ext.androidSupportVersion
     compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.wt.load.container.core:wtLoadContainerCore:0.11'
 }

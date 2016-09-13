@@ -1,16 +1,24 @@
-<com.dinuscxj.refresh.RecyclerRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:id="@+id/pullRefreshLayout"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
+<?xml version="1.0" encoding="utf-8"?>
+<com.wt.load.container.core.WTLoadContainerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/wtLoadContainerLayout"
+    android:layout_width="match_parent"
+    app:childDataViewId="@+id/pullRefreshLayout"
+    android:layout_height="match_parent">
 
 
-
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <com.dinuscxj.refresh.RecyclerRefreshLayout
+        android:id="@+id/pullRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white" />
+        android:layout_height="match_parent">
 
-</com.dinuscxj.refresh.RecyclerRefreshLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"/>
+    </com.dinuscxj.refresh.RecyclerRefreshLayout>
+
+</com.wt.load.container.core.WTLoadContainerView>

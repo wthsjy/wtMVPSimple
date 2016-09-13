@@ -37,6 +37,7 @@ public class DemoVP01Fragment extends BaseNormalListFragment<VPF01Presenter, Dem
     }
 
     @Override public void getNew() {
+
         mPresenter.getNew(null);
     }
 

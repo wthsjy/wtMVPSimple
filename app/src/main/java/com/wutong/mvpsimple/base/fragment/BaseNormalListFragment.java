@@ -2,13 +2,14 @@ package com.wutong.mvpsimple.base.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.dinuscxj.refresh.RecyclerRefreshLayout;
+import com.wt.load.container.core.WTLoadContainerView;
 import com.wutong.mvpsimple.R;
 import com.wutong.mvpsimple.base.adapter.BaseSingleRVAdapter;
 import com.wutong.mvpsimple.base.presenter.BaseListPresenter;
 import com.wutong.mvpsimple.base.view.IRefreshCompleteView;
-import com.wutong.mvpsimple.common.utils.LogHelper;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,9 +21,10 @@ import butterknife.Bind;
  * Created by 吴同 on 2016/9/9 0009.
  */
 public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD extends BaseSingleRVAdapter, E extends Serializable>
-        extends BaseNormalFragment<T> implements IRefreshCompleteView<E>, RecyclerRefreshLayout.OnRefreshListener {
+        extends BaseNormalFragment<T> implements IRefreshCompleteView<E>, RecyclerRefreshLayout.OnRefreshListener, WTLoadContainerView.LoadContainerActionListener {
     private static final String TAG = BaseNormalListFragment.class.getSimpleName();
     @Bind(R.id.recycler_view) RecyclerView mRecyclerView;
+    @Bind(R.id.wtLoadContainerLayout) WTLoadContainerView wtLoadContainerView;
     @Bind(R.id.pullRefreshLayout) RecyclerRefreshLayout pullRefreshLayout;
 
     protected AD mAdapter;
@@ -45,6 +47,7 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
         mRecyclerView.setAdapter(mAdapter);
         pullRefreshLayout.setOnRefreshListener(this);
         mRecyclerView.addOnScrollListener(new AutoLoadEventDetector());
+        wtLoadContainerView.setLoadContainerActionListener(this);
         autoGetNew();
 
 
@@ -53,7 +56,7 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
     private void autoGetNew() {
         mIsLoading = true;
         getNew();
-        pullRefreshLayout.setRefreshing(true);
+        wtLoadContainerView.showLoadingView();
     }
 
 
@@ -70,17 +73,21 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
     @Override protected abstract void inject();
 
     @Override public void getNewSuccess(ArrayList<E> list) {
+        Toast.makeText(getContext(),list.size()+"",Toast.LENGTH_SHORT).show();
         mIsLoading = false;
         pullRefreshLayout.setRefreshing(false);
         if (list == null) {
             hasMore = false;
+            wtLoadContainerView.showNoDataView();
         } else {
             mAdapter.setData((ArrayList) list);
             defaultPageSize = list.size();
             if (defaultPageSize > 0) {
                 hasMore = true;
+                wtLoadContainerView.showDataView();
             } else {
                 hasMore = false;
+                wtLoadContainerView.showNoDataView();
             }
         }
 
@@ -108,6 +115,7 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
     @Override public void getListFail() {
         mIsLoading = false;
         pullRefreshLayout.setRefreshing(false);
+        wtLoadContainerView.showNetErrorView();
     }
 
     public abstract void getNew();
@@ -117,6 +125,14 @@ public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD ext
 
     @Override public void onRefresh() {
         getNew();
+    }
+
+    @Override public void onNetWorkErrorViewClick(WTLoadContainerView view) {
+        autoGetNew();
+    }
+
+    @Override public void onNoDataViewClick(WTLoadContainerView view) {
+        autoGetNew();
     }
 
     private class AutoLoadEventDetector extends RecyclerView.OnScrollListener {
