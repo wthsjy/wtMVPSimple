@@ -56,7 +56,6 @@ dependencies {
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     compile 'com.makeramen:roundedimageview:2.2.1'
     compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.wt.load.container.core:wtLoadContainerCore:0.11'
     compile project(':swipeToLoadCore')
 
 }

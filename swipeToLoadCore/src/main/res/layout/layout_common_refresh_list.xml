@@ -4,21 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/wtLoadContainerLayout"
     android:layout_width="match_parent"
-    app:childDataViewId="@+id/pullRefreshLayout"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:childDataViewId="@+id/ll_refresh_parent">
 
-
-    <com.dinuscxj.refresh.RecyclerRefreshLayout
-        android:id="@+id/pullRefreshLayout"
+    <LinearLayout
+        android:id="@+id/ll_refresh_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <com.dinuscxj.refresh.RecyclerRefreshLayout
+            android:id="@+id/pullRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white"/>
-    </com.dinuscxj.refresh.RecyclerRefreshLayout>
+            android:layout_height="match_parent">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"/>
+        </com.dinuscxj.refresh.RecyclerRefreshLayout>
+    </LinearLayout>
+
 
 </com.wt.load.container.core.WTLoadContainerView>
