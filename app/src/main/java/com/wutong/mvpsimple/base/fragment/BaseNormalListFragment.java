@@ -7,7 +7,7 @@ import android.widget.Toast;
 import com.dinuscxj.refresh.RecyclerRefreshLayout;
 import com.wt.load.container.core.WTLoadContainerView;
 import com.wutong.mvpsimple.R;
-import com.wutong.mvpsimple.base.adapter.BaseSingleRVAdapter;
+import com.wutong.mvpsimple.base.adapter.BaseRVAdapter;
 import com.wutong.mvpsimple.base.presenter.BaseListPresenter;
 import com.wutong.mvpsimple.base.view.IRefreshCompleteView;
 
@@ -20,7 +20,7 @@ import butterknife.Bind;
  * 一般的activity 中的列表形式 fragment
  * Created by 吴同 on 2016/9/9 0009.
  */
-public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD extends BaseSingleRVAdapter, E extends Serializable>
+public abstract class BaseNormalListFragment<T extends BaseListPresenter, AD extends BaseRVAdapter, E extends Serializable>
         extends BaseNormalFragment<T> implements IRefreshCompleteView<E>, RecyclerRefreshLayout.OnRefreshListener, WTLoadContainerView.LoadContainerActionListener {
     private static final String TAG = BaseNormalListFragment.class.getSimpleName();
     @Bind(R.id.recycler_view) RecyclerView mRecyclerView;

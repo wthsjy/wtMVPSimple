@@ -12,12 +12,12 @@ import java.util.ArrayList;
  * 单个viewtype 类型的通用adapter
  * Created by 吴同 on 2016/9/6 0006.
  */
-public abstract class BaseSingleRVAdapter<E, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+public abstract class BaseRVAdapter<E, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
 
     protected Context mContext;
     protected ArrayList<E> mlist = new ArrayList<>();
 
-    public BaseSingleRVAdapter(Context context) {
+    public BaseRVAdapter(Context context) {
         mContext = context;
     }
 
@@ -32,26 +32,23 @@ public abstract class BaseSingleRVAdapter<E, VH extends RecyclerView.ViewHolder>
         return mlist;
     }
 
-    protected abstract VH getVH(View itemView);
 
-    @Override public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(mContext).inflate(getItemViewLayoutId(), null);
-        return getVH(itemView);
+
+
+
+    @Override public int getItemCount() {
+        return mlist.size();
     }
-
 
     @Override public void onBindViewHolder(VH holder, int position) {
         bindData(mContext,holder, mlist.get(position), position);
     }
 
 
-    protected abstract int getItemViewLayoutId();
+
 
     protected abstract void bindData(Context context,VH holder, E t, int position);
 
-    @Override public int getItemCount() {
-        return mlist.size();
-    }
 
 
 }
