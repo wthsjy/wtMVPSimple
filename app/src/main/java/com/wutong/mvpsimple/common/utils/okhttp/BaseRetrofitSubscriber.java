@@ -6,6 +6,9 @@ import com.wutong.mvpsimple.data.entity.BaseEntity;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 

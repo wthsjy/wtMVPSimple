@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:clientApp="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -17,66 +16,10 @@
         android:layout_height="match_parent">
 
 
-        <LinearLayout
+        <Button
+            android:id="@+id/btn_jump"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <Button
-                android:id="@+id/btn_jump"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:text="jump"/>
-
-
-            <com.wt.load.container.core.WTLoadContainerView
-                android:id="@+id/wt_load_container1"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                clientApp:childDataViewId="@+id/child01"
-                clientApp:dataLoadingView="@layout/wt_load_detault_data_loading_view"
-                clientApp:networkErrorView="@layout/wt_load_detault_network_error_view"
-                clientApp:noDataView="@layout/wt_load_detault_no_data_view"
-                clientApp:showLoadingViewInitialize="true">
-
-                <TextView
-                    android:id="@+id/child01"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Large Text11"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-            </com.wt.load.container.core.WTLoadContainerView>
-
-            <com.wt.load.container.core.WTLoadContainerView
-                android:id="@+id/wt_load_container2"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                clientApp:childDataViewId="@+id/child02"
-                android:background="@android:color/holo_red_light"
-                clientApp:showLoadingViewInitialize="true">
-
-                <TextView
-                    android:id="@+id/child02"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Large Text22"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-            </com.wt.load.container.core.WTLoadContainerView>
-
-            <com.wt.load.container.core.WTLoadContainerView
-                android:id="@+id/wt_load_container3"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                clientApp:childDataViewId="@+id/child03"
-                clientApp:showLoadingViewInitialize="true">
-
-                <TextView
-                    android:id="@+id/child03"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Large Text33"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-            </com.wt.load.container.core.WTLoadContainerView>
-        </LinearLayout>
+            android:layout_height="40dp"
+            android:text="jump"/>
     </ScrollView>
 </LinearLayout>
